@@ -3,7 +3,7 @@ const { connection } = require("../config/dbconfig");
 // get all Spaces
 const getAllSpaces = async (req, res) => {
   try {
-    connection.query("SELECT * FROM space", function (error, results, fields) {
+    connection.query("SELECT * FROM space", (error, results, fields) => {
       if (error) throw error;
       res.json(results);
     });
@@ -47,7 +47,7 @@ const createSpace = async (req, res) => {
     connection.query(
       "INSERT INTO space SET ?",
       { ...req.body },
-      function (error, results, fields) {
+      (error, results, fields) => {
         if (error) throw error;
 
         res.json(results);
